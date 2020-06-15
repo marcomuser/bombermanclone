@@ -37,27 +37,9 @@ class Game {
 
         // draw stone obstacles:
         for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
-            image(stoneBox, i, squareSize, squareSize, squareSize)
-        }
-
-        for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
-            image(stoneBox, i, squareSize * 3, squareSize, squareSize)
-        }
-
-        for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
-            image(stoneBox, i, squareSize * 5, squareSize, squareSize)
-        }
-
-        for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
-            image(stoneBox, i, squareSize * 7, squareSize, squareSize)
-        }
-
-        for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
-            image(stoneBox, i, squareSize * 9, squareSize, squareSize)
-        }
-
-        for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
-            image(stoneBox, i, squareSize * 11, squareSize, squareSize)
+            for (let j = 1; j < canvasWidth / squareSize; j += 2) {
+                image(stoneBox, i, squareSize * j, squareSize, squareSize)
+            }
         }
 
         // set background-color for the whole grid:

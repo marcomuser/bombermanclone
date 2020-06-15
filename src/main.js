@@ -1,6 +1,6 @@
 const canvasWidth = 800;
 const canvasHeight = 800;
-const squareSize = canvasWidth / 13;
+const squareSize = canvasWidth / 51;
 const game = new Game();
 
 
