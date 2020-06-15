@@ -1,10 +1,10 @@
 class Player {
-    constructor(name, image, row, col) {
+    constructor(name, row, col) {
         this.name = name;
-        this.image = image;
         this.row = row;
         this.col = col;
         this.lives = 3;
+        this.image;
     }
 
     moveUp() {
@@ -24,6 +24,6 @@ class Player {
     }
 
     draw() {
-        image(this.image, this.col, this.row, squareSize, squareSize);
+        image(this.image || player2DefaultImage, this.col, this.row, squareSize, squareSize);
     }
 }

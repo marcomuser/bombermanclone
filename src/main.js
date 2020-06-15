@@ -4,7 +4,7 @@ const squareSize = canvasWidth / 13;
 const game = new Game();
 
 function preload() {
-
+    game.preload();
 }
 
 function setup() {
