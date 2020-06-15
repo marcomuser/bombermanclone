@@ -1,15 +1,27 @@
-let player1DefaultImage;
-let player2DefaultImage;
+let hansDown;
+let hansUp;
+let hansRight;
+let hansLeft;
+let gretelDown;
+let gretelUp;
+let gretelRight;
+let gretelLeft;
 
 class Game {
     constructor() {
-        this.player1 = new Player('Hans', 0, 0);
-        this.player2 = new Player('Gretel', canvasWidth - squareSize, canvasHeight - squareSize); 
+        this.player1 = new Hans('Hans', 0, 0);
+        this.player2 = new Gretel('Gretel', canvasWidth - squareSize, canvasHeight - squareSize); 
     }
 
     preload() {
-        player1DefaultImage = loadImage('assets/player1_down.png');
-        player2DefaultImage = loadImage('assets/player2_down.png');
+        hansDown = loadImage('assets/player1_down.png');
+        hansUp = loadImage('assets/player1_up.png');
+        hansRight = loadImage('assets/player1_right.png');
+        hansLeft = loadImage('assets/player1_left.png');
+        gretelDown = loadImage('assets/player2_down.png');
+        gretelUp = loadImage('assets/player2_up.png');
+        gretelRight = loadImage('assets/player2_right.png');
+        gretelLeft = loadImage('assets/player2_left.png');
     }
 
     draw() {
@@ -25,7 +37,7 @@ class Game {
         background('rgba(0,255,0, 0.25)');
 
         // draw the player:
-        // player1.draw();
+        this.player1.draw();
         this.player2.draw();
     }
 }
