@@ -26,7 +26,14 @@ class Game {
         stoneBox = loadImage('assets/box_stone.png')
     }
 
+    setup() {
+        createCanvas(canvasWidth, canvasHeight);
+        frameRate(15);
+    }
+
     draw() {
+        clear();
+
         // draw auxiliary lines:
         for (let i = 0; i <= canvasWidth; i += squareSize) {
             line(0, i, canvasWidth, i);
@@ -41,9 +48,6 @@ class Game {
                 image(stoneBox, i, squareSize * j, squareSize, squareSize)
             }
         }
-
-        // set background-color for the whole grid:
-        // background('rgba(0,255,0, 0.25)');
 
         // draw the player:
         this.player1.draw();

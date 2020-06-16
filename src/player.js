@@ -7,4 +7,7 @@ class Player {
         this.image;
     }
 
+    dropBomb() {
+        
+    }
 }

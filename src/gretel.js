@@ -1,26 +1,48 @@
 class Gretel extends Player {
-    constructor(name, row, col, image, lives) {
+    constructor(name, row, col, x, y, image, lives) {
         super(name, row, col, image, lives);
+        this.x = (canvasWidth / squareSize) - 1;
+        this.y = (canvasWidth / squareSize) - 1;
     }
 
     moveUp() {
-        this.row -= squareSize;
-        this.image = gretelUp;
+        if (this.y - 1 < 0 || grid[this.y - 1][this.x] === 5) {
+            console.log('You cannot move here');
+        } else {
+            this.row -= squareSize;
+            this.y -= 1;
+            this.image = gretelUp;
+        }
     }
 
     moveDown() {
-        this.row += squareSize;
-        this.image = gretelDown;
+        if (this.y + 1 > (canvasWidth / squareSize) - 1 || grid[this.y + 1][this.x] === 5) {
+            console.log('You cannot move here');
+        } else {
+            this.row += squareSize;
+            this.image = gretelDown;
+            this.y += 1;
+        }
     }
 
     moveRight() {
-        this.col += squareSize;
-        this.image = gretelRight;
+        if (this.x + 1 > (canvasWidth / squareSize) - 1 || grid[this.y][this.x + 1] === 5) {
+            console.log('You cannot move here');
+        } else {
+            this.col += squareSize;
+            this.x += 1;
+            this.image = gretelRight;
+        }
     }
 
     moveLeft() {
-        this.col -= squareSize;
-        this.image = gretelLeft;
+        if (this.x - 1 < 0 || grid[this.y][this.x - 1] === 5) {
+            console.log('You cannot move here');
+        } else {
+            this.col -= squareSize;
+            this.x -= 1;
+            this.image = gretelLeft;
+        }
     }
 
     draw() {

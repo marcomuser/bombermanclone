@@ -1,26 +1,48 @@
 class Hans extends Player {
-    constructor(name, row, col, image, lives) {
+    constructor(name, row, col, x, y, image, lives) {
         super(name, row, col, image, lives);
+        this.x = 0;
+        this.y = 0;
     }
 
     moveUp() {
-        this.row -= squareSize;
-        this.image = hansUp;
+        if (this.y - 1 < 0 || grid[this.y - 1][this.x] === 5) {
+            console.log('You cannot move here');
+        } else {
+            this.row -= squareSize;
+            this.y -= 1;
+            this.image = hansUp;
+        }
     }
 
     moveDown() {
-        this.row += squareSize;
-        this.image = hansDown;
+        if (this.y + 1 > (canvasWidth / squareSize) - 1 || grid[this.y + 1][this.x] === 5) {
+            console.log('You cannot move here');
+        } else {
+            this.row += squareSize;
+            this.image = hansDown;
+            this.y += 1;
+        }
     }
 
     moveRight() {
-        this.col += squareSize;
-        this.image = hansRight;
+        if (this.x + 1 > (canvasWidth / squareSize) - 1 || grid[this.y][this.x + 1] === 5) {
+            console.log('You cannot move here');
+        } else {
+            this.col += squareSize;
+            this.x += 1;
+            this.image = hansRight;
+        }
     }
 
     moveLeft() {
-        this.col -= squareSize;
-        this.image = hansLeft;
+        if (this.x - 1 < 0 || grid[this.y][this.x - 1] === 5) {
+            console.log('You cannot move here');
+        } else {
+            this.col -= squareSize;
+            this.x -= 1;
+            this.image = hansLeft;
+        }
     }
 
     draw() {
