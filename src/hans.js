@@ -1,3 +1,5 @@
+// Hans is player1
+
 class Hans extends Player {
     constructor(name, row, col, x, y, image, lives) {
         super(name, row, col, image, lives);
@@ -20,8 +22,8 @@ class Hans extends Player {
             console.log('You cannot move here');
         } else {
             this.row += squareSize;
-            this.image = hansDown;
             this.y += 1;
+            this.image = hansDown;
         }
     }
 
@@ -45,7 +47,12 @@ class Hans extends Player {
         }
     }
 
+    dropBomb() {
+        let bomb = new Bomb(this.row, this.col, this.x, this.y);
+    }
+
     draw() {
         image(this.image || hansDown, this.col, this.row, squareSize, squareSize);
+        
     }
 }

@@ -16,11 +16,7 @@ const grid = [
 
 
 /*
-Explanation:
-
 0: squareField is empty
-1: location of Hans
-2: location of Gretel
-3: location of dropped bombs
+4: squareField ist a wooden box
 5: squareField is a stone box
 */

@@ -17,13 +17,13 @@ function draw() {
 }
 
 function keyPressed() {
-    if (keyCode === 73) {
+    if (keyCode === 38) {
       game.player1.moveUp();
-    } else if (keyCode === 75) {
+    } else if (keyCode === 40) {
       game.player1.moveDown();
-    } else if (keyCode === 76) {
+    } else if (keyCode === 39) {
       game.player1.moveRight();
-    } else if (keyCode === 74) {
+    } else if (keyCode === 37) {
       game.player1.moveLeft();
     }
     if (keyCode === 87) {

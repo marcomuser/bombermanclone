@@ -7,6 +7,7 @@ let gretelUp;
 let gretelRight;
 let gretelLeft;
 let stoneBox;
+let bombImage;
 
 class Game {
     constructor() {
@@ -24,6 +25,7 @@ class Game {
         gretelRight = loadImage('assets/player2_right.png');
         gretelLeft = loadImage('assets/player2_left.png');
         stoneBox = loadImage('assets/box_stone.png')
+        bombImage = loadImage('assets/bomb.png')
     }
 
     setup() {

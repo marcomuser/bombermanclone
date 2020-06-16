@@ -1,3 +1,5 @@
+// Gretel is player2
+
 class Gretel extends Player {
     constructor(name, row, col, x, y, image, lives) {
         super(name, row, col, image, lives);
@@ -20,8 +22,8 @@ class Gretel extends Player {
             console.log('You cannot move here');
         } else {
             this.row += squareSize;
-            this.image = gretelDown;
             this.y += 1;
+            this.image = gretelDown;
         }
     }
 
