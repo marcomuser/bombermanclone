@@ -5,6 +5,7 @@ class Hans extends Player {
         super(name, row, col, image, lives);
         this.x = 0;
         this.y = 0;
+        this.bomb=false
     }
 
     moveUp() {
@@ -48,11 +49,15 @@ class Hans extends Player {
     }
 
     dropBomb() {
-        let bomb = new Bomb(this.row, this.col, this.x, this.y);
+        
+
     }
 
     draw() {
         image(this.image || hansDown, this.col, this.row, squareSize, squareSize);
-        
+        // bomb.draw();
+        if(game.bomb) {
+            game.bomb.draw();
+        }
     }
 }
