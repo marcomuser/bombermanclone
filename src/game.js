@@ -70,19 +70,55 @@ class Game {
             console.log('this will destroy a whole row');
             if (this.player1.y === y) {
                 this.player1.lives -= 1;
+                console.log('player1: ', this.player1.lives)
                 this.resetPlayerPosition(this.player1);
+                if (this.player1.lives < 1) {
+                    this.over = true;
+                }
+            }
+            if (this.player2.y === y) {
+                this.player2.lives -= 1;
+                console.log('player2: ', this.player2.lives)
+                this.resetPlayerPosition(this.player2);
+                if (this.player2.lives < 1) {
+                    this.over = true;
+                }
             }
         } else if (!checkColForObstacle(x) && checkRowForObstacle(y)) {
             console.log('this will destroy a whole column');
             if (this.player1.x === x) {
                 this.player1.lives -= 1;
+                console.log('player1: ', this.player1.lives)
                 this.resetPlayerPosition(this.player1);
+                if (this.player1.lives < 1) {
+                    this.over = true;
+                }
+            }
+            if (this.player2.x === x) {
+                this.player2.lives -= 1;
+                console.log('player2: ', this.player2.lives)
+                this.resetPlayerPosition(this.player2);
+                if (this.player2.lives < 1) {
+                    this.over = true;
+                }
             }
         } else {
             console.log('this will destroy both row and column');
             if (this.player1.x === x || this.player1.y === y) {
                 this.player1.lives -= 1;
+                console.log('player1: ', this.player1.lives)
                 this.resetPlayerPosition(this.player1);
+                if (this.player1.lives < 1) {
+                    this.over = true;
+                }
+            }
+            if (this.player2.x === x || this.player2.y === y) {
+                this.player2.lives -= 1;
+                console.log('player2: ', this.player2.lives)
+                this.resetPlayerPosition(this.player2);
+                if (this.player2.lives < 1) {
+                    this.over = true;
+                }
             }
         }
     }
