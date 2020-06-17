@@ -13,7 +13,6 @@ function setup() {
 
 function draw() {
     game.draw();
-    console.log(game.bombsArr)
 }
 
 function keyPressed() {

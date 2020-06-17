@@ -49,9 +49,5 @@ class Hans extends Player {
 
     draw() {
         image(this.image || hansDown, this.col, this.row, squareSize, squareSize);
-        // bomb.draw();
-        // if(game.bomb) {
-        //     game.bomb.draw();
-        // }
     }
 }
