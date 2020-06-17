@@ -10,12 +10,13 @@ class Bomb {
     explosion() {
         setTimeout(() => {
             this.explodes = true;
-            game.makeExplode();
-        }, 800);
+            game.makeExplode(this.x, this.y);
+        }, 3000);
     }
 
     draw() {
-        image(bombImage, this.col, this.row, squareSize, squareSize);
-        console.log(this.explodes);
+        if (!this.explodes) {
+            image(bombImage, this.col, this.row, squareSize, squareSize);
+        }     
     }
 }

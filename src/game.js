@@ -12,7 +12,8 @@ let bombImage;
 class Game {
     constructor() {
         this.player1 = new Hans('Hans', 0, 0);
-        this.player2 = new Gretel('Gretel', canvasWidth - squareSize, canvasHeight - squareSize); 
+        this.player2 = new Gretel('Gretel', canvasWidth - squareSize, canvasHeight - squareSize);
+        this.over = false;
     }
 
     preload() {
@@ -32,9 +33,58 @@ class Game {
         createCanvas(canvasWidth, canvasHeight);
         frameRate(15);
     }
+
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    
+    resetPlayerPosition(gamer) {
+        let randomCorner = this.getRandomInt(0, 4);
+        if (randomCorner === 0) {
+            gamer.row = 0;
+            gamer.col = 0;
+            gamer.x = 0;
+            gamer.y = 0;
+        } else if (randomCorner === 1) {
+            gamer.row = canvasWidth - squareSize;
+            gamer.col = 0;
+            gamer.x = 0;
+            gamer.y = (canvasWidth / squareSize) - 1;
+        } else if (randomCorner === 2) {
+            gamer.row = 0;
+            gamer.col = canvasWidth - squareSize;
+            gamer.x = (canvasWidth / squareSize) - 1;
+            gamer.y = 0;
+        } else if (randomCorner === 3) {
+            gamer.row = canvasWidth - squareSize;
+            gamer.col = canvasWidth - squareSize;
+            gamer.x = (canvasWidth / squareSize) - 1;
+            gamer.y = (canvasWidth / squareSize) - 1;
+        }
+    }
     
     makeExplode(x, y) {
-        
+        if (checkColForObstacle(x) && !checkRowForObstacle(y)) {
+            console.log('this will destroy a whole row');
+            if (this.player1.y === y) {
+                this.player1.lives -= 1;
+                this.resetPlayerPosition(this.player1);
+            }
+        } else if (!checkColForObstacle(x) && checkRowForObstacle(y)) {
+            console.log('this will destroy a whole column');
+            if (this.player1.x === x) {
+                this.player1.lives -= 1;
+                this.resetPlayerPosition(this.player1);
+            }
+        } else {
+            console.log('this will destroy both row and column');
+            if (this.player1.x === x || this.player1.y === y) {
+                this.player1.lives -= 1;
+                this.resetPlayerPosition(this.player1);
+            }
+        }
     }
 
     draw() {
