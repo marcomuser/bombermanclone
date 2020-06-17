@@ -126,23 +126,34 @@ class Game {
     draw() {
         clear();
 
-        // draw auxiliary lines:
-        for (let i = 0; i <= canvasWidth; i += squareSize) {
-            line(0, i, canvasWidth, i);
-        }
-        for (let i = 0; i <= canvasHeight; i += squareSize) {
-            line(i, 0, i, canvasHeight);
-        }
+        if (!game.over) {
+            // draw auxiliary lines:
+            for (let i = 0; i <= canvasWidth; i += squareSize) {
+                line(0, i, canvasWidth, i);
+            }
+            for (let i = 0; i <= canvasHeight; i += squareSize) {
+                line(i, 0, i, canvasHeight);
+            }
 
-        // draw stone obstacles:
-        for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
-            for (let j = 1; j < canvasWidth / squareSize; j += 2) {
-                image(stoneBox, i, squareSize * j, squareSize, squareSize)
+            // draw stone obstacles:
+            for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
+                for (let j = 1; j < canvasWidth / squareSize; j += 2) {
+                    image(stoneBox, i, squareSize * j, squareSize, squareSize)
+                }
+            }
+
+            // draw the player:
+            this.player1.draw();
+            this.player2.draw();
+        } else {
+            noLoop();
+            if (game.player1.lives === 0 && game.player2.lives === 0) {
+                print("It's a draw!");
+            } else if (game.player1.lives === 0) {
+                print("Player 2 wins!");
+            } else {
+                print("Player 1 wins!");
             }
         }
-
-        // draw the player:
-        this.player1.draw();
-        this.player2.draw();
     }
 }
