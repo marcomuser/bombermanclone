@@ -14,6 +14,7 @@ class Game {
         this.player1 = new Hans('Hans', 0, 0);
         this.player2 = new Gretel('Gretel', canvasWidth - squareSize, canvasHeight - squareSize);
         this.over = false;
+        this.bombsArr = [];
     }
 
     preload() {
@@ -127,6 +128,14 @@ class Game {
         clear();
 
         if (!game.over) {
+            this.bombsArr.forEach(bomb => {
+                bomb.draw();
+            })
+
+            this.bombsArr = this.bombsArr.filter(bomb => {
+                return !bomb.explodes;
+            })
+
             // draw auxiliary lines:
             for (let i = 0; i <= canvasWidth; i += squareSize) {
                 line(0, i, canvasWidth, i);

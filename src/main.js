@@ -13,6 +13,7 @@ function setup() {
 
 function draw() {
     game.draw();
+    console.log(game.bombsArr)
 }
 
 function keyPressed() {
@@ -25,8 +26,9 @@ function keyPressed() {
     } else if (keyCode === 37) {
       game.player1.moveLeft();
     } else if (keyCode === 32) {
-      game.bomb = new Bomb(game.player1.row, game.player1.col, game.player1.x, game.player1.y);
-      game.bomb.explosion();
+      let newBomb = new Bomb(game.player1.row, game.player1.col, game.player1.x, game.player1.y);
+      game.bombsArr.push(newBomb);
+      newBomb.explosion();
     }
 
     if (keyCode === 87) {
@@ -38,8 +40,9 @@ function keyPressed() {
     } else if (keyCode === 65) {
       game.player2.moveLeft();
     } else if (keyCode === 81) {
-      game.bomb = new Bomb(game.player2.row, game.player2.col, game.player2.x, game.player2.y);
-      game.bomb.explosion();
+      let newBomb2 = new Bomb(game.player2.row, game.player2.col, game.player2.x, game.player2.y);
+      game.bombsArr.push(newBomb2);
+      newBomb2.explosion();
     }
   }
 
