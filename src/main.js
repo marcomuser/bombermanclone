@@ -2,7 +2,6 @@ const canvasWidth = 800;
 const canvasHeight = 800;
 const squareSize = canvasWidth / 13;
 const game = new Game();
-//const bomb = new Bomb(game.player1.row, game.player1.col, game.player1.x, game.player1.y);
 
 function preload() {
     game.preload();
@@ -28,8 +27,6 @@ function keyPressed() {
     } else if (keyCode === 32) {
       game.bomb = new Bomb(game.player1.row, game.player1.col, game.player1.x, game.player1.y);
       game.bomb.explosion();
-      //game.player1.bomb = true;
-      //setTimeout(function() {game.bomb.explosion = true}, 800);
     }
 
     if (keyCode === 87) {
@@ -40,5 +37,8 @@ function keyPressed() {
       game.player2.moveRight();
     } else if (keyCode === 65) {
       game.player2.moveLeft();
+    } else if (keyCode === 81) {
+      game.bomb = new Bomb(game.player2.row, game.player2.col, game.player2.x, game.player2.y);
+      game.bomb.explosion();
     }
   }

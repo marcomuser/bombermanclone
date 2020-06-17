@@ -5,5 +5,6 @@ class Player {
         this.col = col;
         this.lives = 3;
         this.image;
+        this.bomb = false;
     }
 }

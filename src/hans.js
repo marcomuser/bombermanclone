@@ -1,11 +1,10 @@
 // Hans is player1
 
 class Hans extends Player {
-    constructor(name, row, col, x, y, image, lives) {
-        super(name, row, col, image, lives);
+    constructor(name, row, col, x, y, image, lives, bomb) {
+        super(name, row, col, image, lives, bomb);
         this.x = 0;
         this.y = 0;
-        this.bomb=false
     }
 
     moveUp() {
@@ -46,11 +45,6 @@ class Hans extends Player {
             this.x -= 1;
             this.image = hansLeft;
         }
-    }
-
-    dropBomb() {
-        
-
     }
 
     draw() {

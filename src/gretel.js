@@ -1,8 +1,8 @@
 // Gretel is player2
 
 class Gretel extends Player {
-    constructor(name, row, col, x, y, image, lives) {
-        super(name, row, col, image, lives);
+    constructor(name, row, col, x, y, image, lives, bomb) {
+        super(name, row, col, image, lives, bomb);
         this.x = (canvasWidth / squareSize) - 1;
         this.y = (canvasWidth / squareSize) - 1;
     }

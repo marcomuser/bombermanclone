@@ -7,14 +7,12 @@ let gretelUp;
 let gretelRight;
 let gretelLeft;
 let stoneBox;
-// let bomb;
 let bombImage;
 
 class Game {
     constructor() {
         this.player1 = new Hans('Hans', 0, 0);
-        this.player2 = new Gretel('Gretel', canvasWidth - squareSize, canvasHeight - squareSize);
-        this.bomb; 
+        this.player2 = new Gretel('Gretel', canvasWidth - squareSize, canvasHeight - squareSize); 
     }
 
     preload() {
@@ -34,7 +32,10 @@ class Game {
         createCanvas(canvasWidth, canvasHeight);
         frameRate(15);
     }
-    // checkExplosion() {
+    
+    makeExplode(x, y) {
+        
+    }
 
     draw() {
         clear();
