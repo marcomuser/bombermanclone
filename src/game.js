@@ -8,6 +8,9 @@ let gretelRight;
 let gretelLeft;
 let stoneBox;
 let bombImage;
+let player1wins;
+let player2wins;
+let gameDraw;
 
 class Game {
     constructor() {
@@ -26,8 +29,11 @@ class Game {
         gretelUp = loadImage('assets/player2_up.png');
         gretelRight = loadImage('assets/player2_right.png');
         gretelLeft = loadImage('assets/player2_left.png');
-        stoneBox = loadImage('assets/box_stone.png')
-        bombImage = loadImage('assets/bomb.png')
+        stoneBox = loadImage('assets/box_stone.png');
+        bombImage = loadImage('assets/bomb.png');
+        player1wins = loadImage('assets/player1_wins.png');
+        player2wins = loadImage('assets/player2_winner.png');
+        gameDraw = loadImage('assets/gamedraw.png');
     }
 
     setup() {
@@ -163,27 +169,12 @@ class Game {
         } else {
             noLoop();
 
-            // draw auxiliary lines:
-            for (let i = 0; i <= canvasWidth; i += squareSize) {
-                line(0, i, canvasWidth, i);
-            }
-            for (let i = 0; i <= canvasHeight; i += squareSize) {
-                line(i, 0, i, canvasHeight);
-            }
-
-            // draw stone obstacles:
-            for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
-                for (let j = 1; j < canvasWidth / squareSize; j += 2) {
-                    image(stoneBox, i, squareSize * j, squareSize, squareSize)
-                }
-            }
-
             if (game.player1.lives < 1 && game.player2.lives < 1) {
-                print("It's a draw!");
+                image(gameDraw, 0, 0);
             } else if (game.player1.lives < 1) {
-                print("Player 2 wins!");
+                image(player2wins, 0, 0);
             } else {
-                print("Player 1 wins!");
+                image(player1wins, 0, 0);
             }
         }
     }
