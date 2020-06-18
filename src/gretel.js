@@ -9,7 +9,7 @@ class Gretel extends Player {
 
     moveUp() {
         if (this.y - 1 < 0 || grid[this.y - 1][this.x] === 5) {
-            console.log('You cannot move here');
+            // console.log('You cannot move here');
         } else {
             this.row -= squareSize;
             this.y -= 1;
@@ -19,7 +19,7 @@ class Gretel extends Player {
 
     moveDown() {
         if (this.y + 1 > (canvasWidth / squareSize) - 1 || grid[this.y + 1][this.x] === 5) {
-            console.log('You cannot move here');
+            // console.log('You cannot move here');
         } else {
             this.row += squareSize;
             this.y += 1;
@@ -29,7 +29,7 @@ class Gretel extends Player {
 
     moveRight() {
         if (this.x + 1 > (canvasWidth / squareSize) - 1 || grid[this.y][this.x + 1] === 5) {
-            console.log('You cannot move here');
+            // console.log('You cannot move here');
         } else {
             this.col += squareSize;
             this.x += 1;
@@ -39,7 +39,7 @@ class Gretel extends Player {
 
     moveLeft() {
         if (this.x - 1 < 0 || grid[this.y][this.x - 1] === 5) {
-            console.log('You cannot move here');
+            // console.log('You cannot move here');
         } else {
             this.col -= squareSize;
             this.x -= 1;

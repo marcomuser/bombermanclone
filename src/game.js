@@ -68,10 +68,11 @@ class Game {
     
     makeExplode(x, y) {
         if (checkColForObstacle(x) && !checkRowForObstacle(y)) {
-            console.log('this will destroy a whole row');
+            console.log('bomb destroyed a whole row');
             if (this.player1.y === y) {
                 this.player1.lives -= 1;
-                console.log('player1: ', this.player1.lives)
+                document.querySelectorAll('header span')[0].innerText = this.player1.lives;
+                // console.log('player1: ', this.player1.lives)
                 this.resetPlayerPosition(this.player1);
                 if (this.player1.lives < 1) {
                     this.over = true;
@@ -79,17 +80,19 @@ class Game {
             }
             if (this.player2.y === y) {
                 this.player2.lives -= 1;
-                console.log('player2: ', this.player2.lives)
+                document.querySelectorAll('header span')[1].innerText = this.player2.lives;
+                // console.log('player2: ', this.player2.lives)
                 this.resetPlayerPosition(this.player2);
                 if (this.player2.lives < 1) {
                     this.over = true;
                 }
             }
         } else if (!checkColForObstacle(x) && checkRowForObstacle(y)) {
-            console.log('this will destroy a whole column');
+            console.log('bomb destroyed a whole column');
             if (this.player1.x === x) {
                 this.player1.lives -= 1;
-                console.log('player1: ', this.player1.lives)
+                document.querySelectorAll('header span')[0].innerText = this.player1.lives;
+                // console.log('player1: ', this.player1.lives)
                 this.resetPlayerPosition(this.player1);
                 if (this.player1.lives < 1) {
                     this.over = true;
@@ -97,17 +100,19 @@ class Game {
             }
             if (this.player2.x === x) {
                 this.player2.lives -= 1;
-                console.log('player2: ', this.player2.lives)
+                document.querySelectorAll('header span')[1].innerText = this.player2.lives;
+                // console.log('player2: ', this.player2.lives)
                 this.resetPlayerPosition(this.player2);
                 if (this.player2.lives < 1) {
                     this.over = true;
                 }
             }
         } else {
-            console.log('this will destroy both row and column');
+            console.log('bomb destroyed both row and column');
             if (this.player1.x === x || this.player1.y === y) {
                 this.player1.lives -= 1;
-                console.log('player1: ', this.player1.lives)
+                document.querySelectorAll('header span')[0].innerText = this.player1.lives;
+                // console.log('player1: ', this.player1.lives)
                 this.resetPlayerPosition(this.player1);
                 if (this.player1.lives < 1) {
                     this.over = true;
@@ -115,7 +120,8 @@ class Game {
             }
             if (this.player2.x === x || this.player2.y === y) {
                 this.player2.lives -= 1;
-                console.log('player2: ', this.player2.lives)
+                document.querySelectorAll('header span')[1].innerText = this.player2.lives;
+                // console.log('player2: ', this.player2.lives)
                 this.resetPlayerPosition(this.player2);
                 if (this.player2.lives < 1) {
                     this.over = true;
@@ -156,9 +162,25 @@ class Game {
             this.player2.draw();
         } else {
             noLoop();
-            if (game.player1.lives === 0 && game.player2.lives === 0) {
+
+            // draw auxiliary lines:
+            for (let i = 0; i <= canvasWidth; i += squareSize) {
+                line(0, i, canvasWidth, i);
+            }
+            for (let i = 0; i <= canvasHeight; i += squareSize) {
+                line(i, 0, i, canvasHeight);
+            }
+
+            // draw stone obstacles:
+            for (let i = squareSize; i <= canvasWidth; i+= squareSize * 2) {
+                for (let j = 1; j < canvasWidth / squareSize; j += 2) {
+                    image(stoneBox, i, squareSize * j, squareSize, squareSize)
+                }
+            }
+
+            if (game.player1.lives < 1 && game.player2.lives < 1) {
                 print("It's a draw!");
-            } else if (game.player1.lives === 0) {
+            } else if (game.player1.lives < 1) {
                 print("Player 2 wins!");
             } else {
                 print("Player 1 wins!");

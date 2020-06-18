@@ -1,11 +1,40 @@
-body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: aquamarine;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+html, body {
+  font-family: 'Rock Salt', cursive;
+  display: flex;
+  flex-direction: column;
+  background-color: aquamarine;
+  font-size: 16px;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
   
-  h1 {
-    font-weight: 400;
-  }
+h1 {
+  font-size: 2.5rem;
+}
+
+.game-status {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.3rem;
+}
+
+.game-status img {
+  margin: 0 1rem;
+}
+
+.game-status span {
+  margin: 0rem 0.5rem 0rem 1rem;
+  color: red;
+}
+
+canvas {
+  margin: 0 auto;
+}
