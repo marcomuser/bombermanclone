@@ -11,12 +11,14 @@ let bombImage;
 let player1wins;
 let player2wins;
 let gameDraw;
+let startScreen;
 
 class Game {
     constructor() {
         this.player1 = new Hans('Hans', 0, 0);
         this.player2 = new Gretel('Gretel', canvasWidth - squareSize, canvasHeight - squareSize);
         this.over = false;
+        this.started = false;
         this.bombsArr = [];
     }
 
@@ -34,6 +36,7 @@ class Game {
         player1wins = loadImage('assets/player1_wins.png');
         player2wins = loadImage('assets/player2_winner.png');
         gameDraw = loadImage('assets/gamedraw.png');
+        startScreen = loadImage('assets/startscreen.png');
     }
 
     setup() {
@@ -74,7 +77,7 @@ class Game {
     
     makeExplode(x, y) {
         if (checkColForObstacle(x) && !checkRowForObstacle(y)) {
-            console.log('bomb destroyed a whole row');
+            // console.log('bomb destroyed a whole row');
             if (this.player1.y === y) {
                 this.player1.lives -= 1;
                 document.querySelectorAll('header span')[0].innerText = this.player1.lives;
@@ -94,7 +97,7 @@ class Game {
                 }
             }
         } else if (!checkColForObstacle(x) && checkRowForObstacle(y)) {
-            console.log('bomb destroyed a whole column');
+            // console.log('bomb destroyed a whole column');
             if (this.player1.x === x) {
                 this.player1.lives -= 1;
                 document.querySelectorAll('header span')[0].innerText = this.player1.lives;
@@ -114,7 +117,7 @@ class Game {
                 }
             }
         } else {
-            console.log('bomb destroyed both row and column');
+            // console.log('bomb destroyed both row and column');
             if (this.player1.x === x || this.player1.y === y) {
                 this.player1.lives -= 1;
                 document.querySelectorAll('header span')[0].innerText = this.player1.lives;
@@ -138,8 +141,9 @@ class Game {
 
     draw() {
         clear();
-
-        if (!game.over) {
+        if (!game.started) {
+            image(startScreen, 0, 0)
+        } else if (game.started && !game.over) {
             this.bombsArr.forEach(bomb => {
                 bomb.draw();
             })
