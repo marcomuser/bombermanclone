@@ -46,5 +46,3 @@ function keyPressed() {
       newBomb2.explosion();
     }
 }
-
-  // BUG TO FIX: whenever a new bomb gets instantiated the old one gets replaced by the new one. Instead the new one should be additive.

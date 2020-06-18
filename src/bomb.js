@@ -17,6 +17,6 @@ class Bomb {
     draw() {
         if (!this.explodes) {
             image(bombImage, this.col, this.row, squareSize, squareSize);
-        }     
+        }
     }
 }
