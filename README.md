@@ -1,5 +1,5 @@
 # bombermanclone
-In this learning project I built a clone of the classic 'Bomberman' game within four days. It makes use of the p5.js library (based on HTML Canvas) and DOM manipulation.
+In this learning project, I built a clone of the classic game 'Bomberman' within four days. It makes use of the p5.js library (based on HTML Canvas) and object-oriented programming in JavaScript ES6+.
 
 
 ## License Information
